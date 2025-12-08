@@ -98,36 +98,156 @@
                 opacity: 0.4;   /* starts dimmed since layers are invisible */
                 cursor: pointer;
               }
+              /* Floating info button in top right */
+              .info-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
               
+                width: 28px;
+                height: 28px;
+              
+                background: white;
+                border: 2px solid rgba(0,0,0,0.25);
+                border-radius: 50%;
+              
+                font-size: 18px;
+                line-height: 24px;
+                text-align: center;
+                cursor: pointer;
+              
+                color: #333;
+                font-weight: bold;
+              
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              
+                box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+                z-index: 5;
+              }
+              
+              .info-panel {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 320px;
+                height: 100%;
+                background: white;
+                box-shadow: -2px 0 6px rgba(0,0,0,0.25);
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 5;
+                font-family: Arial, sans-serif;
+              }
+              
+              .info-panel.active {
+                transform: translateX(0);
+              }
+              
+              .info-content {
+                padding: 20px;
+                font-size: 14px;
+                line-height: 1.4;
+              }
+              
+              .close-btn {
+                margin-top: 20px;
+                padding: 6px 12px;
+                background: #444;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+              }
+              
+  
   </style>
 </head>
 
 <body>
   <div id="map"></div>
-
+  <div id="info-button" class="info-button">ⓘ</div>
+  <div id="info-panel" class="info-panel">
+    <div class="info-content">
+      <h3>Data Sources</h3>
+      <p>
+        New UDO Zoning Classes: Durham GIS
+        Land Class Types: Durham GIS Active Addresses
+        Median Household Income: Durham Compass
+      </p>
+  
+      <button id="info-close" class="close-btn">Close</button>
+    </div>
+  </div>
+  
   <div id="legend" class="legend">
 
-    <h4>Zoning Categories</h4>
+    <h4>New UDO Draft Zoning Classes</h4>
     <div><span class="color-box" style="background:hsl(244, 99%, 73%)"></span><label>R-D</label>
         <span class="info-icon">i
-            <span class="tooltip">Lot</span>
+            <span class="tooltip">
+                <strong>Current Comparable Zoning:</strong><br>
+                RU-5, RU-5(2), RS-8, RS-10, RS-20, RR
+                <br><br>
+            
+                <strong>Lot Size (min):</strong><br>
+                Base: 5,000'<br>
+                Compact & Affordable: 0'
+                <br><br>
+            
+                <strong>Density (max):</strong><br>
+                Base: 1 / lot<br>
+                Compact: 1 / 1,250 SF<br>
+                Affordable: 1 / 625 SF
+            </span>
           </span>
     </div>
 
     <div><span class="color-box" style="background:hsl(17, 67%, 66%)"></span><label>RX-3, RX-5, IX, RX-8</label>
         <span class="info-icon">i
-            <span class="tooltip">Residential District: Low-density, detached homes.</span>
-          </span>
+            <span class="tooltip">
+                <strong>Current Comparable Zoning:</strong><br>
+RS-M, RU-M, RC
+                <br><br>
+            
+                <strong>Lot Size (min):</strong><br>
+All: 0'
+                <br><br>
+                <strong>Unit size (max):</strong><br>
+                Base & Affordable: None<br>
+                Compact: 450 SF
+                <br><br>
+                <strong>Height (max stories):</strong><br>
+                Base: 3, 5, 8<br>
+                Compact: 5, 8, 13<br>
+                Affordable: Unlimited
+            </span>          </span>
     </div>
     <div><span class="color-box" style="background:hsl(114, 100%, 75%)"></span><label>CX-3, CX-5, CX-8, CX-20</label>
         <span class="info-icon">i
-            <span class="tooltip">Residential District: Low-density, detached homes.</span>
-          </span>
+            <span class="tooltip">
+                <strong>Current Comparable Zoning:</strong><br>
+RS-M, RU-M, RC, DD, CD, CG, IO
+                <br><br>
+            
+                <strong>Lot Size (min):</strong><br>
+All: 0'
+                <br><br>
+                <strong>Unit size (max):</strong><br>
+                Base & Affordable: None<br>
+                Compact: 450 SF
+                <br><br>
+                <strong>Height (max stories):</strong><br>
+                Base: 3, 5, 8<br>
+                Compact: 5, 8, 13<br>
+                Affordable: Unlimited
+            </span>              </span>
     </div>
     <div><span class="color-box" style="background:hsla(0,0%,70%,0.70)"></span><label>Other</label></div>
   
     <h4 style="margin-top:12px;margin-bottom:0px;">Median Household Income (2023)</h4>
-    <i style="margin-top:-20px; margin-bottom:20px;">click boxes to see layers then hover <br>for more info</i>
+    <i style="margin-top:-20px; margin-bottom:20px;">click boxes to see layers then hover <br>for more info about housing types</i>
 
     <div class="income-swatch" data-layer="income-40">
         <span class="color-box" style="background:#fee5d9; margin-top:12px"></span><label>&lt; $40k</label>
