@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>My Mapbox Webmap</title>
+  <title>New UDO Affordability Explorer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Mapbox GL JS -->
@@ -170,11 +170,18 @@
   <div id="info-button" class="info-button">ⓘ</div>
   <div id="info-panel" class="info-panel">
     <div class="info-content">
+        <h3>Instructions</h3>
+        This map allows you to explore the areas of Durham County that will be affected by the proposed density bonus program.
+        <br><br>
+        Use the legend in the bottom right corner to toggle on/off the map of census tracks based on the Median Household Income.
+        <br><br> When these layers are turned on, you can also hover over the map to see the primary residential land class types in that tract.
+<br><br>
       <h3>Data Sources</h3>
       <p>
-        New UDO Zoning Classes: Durham GIS
-        Land Class Types: Durham GIS Active Addresses
-        Median Household Income: Durham Compass
+        New UDO Zoning Classes: <a href="https://services2.arcgis.com/G5vR3cOjh6g2Ed8E/arcgis/rest/services/Zoning_UDO/FeatureServer/0" target="_blank"> Durham GIS</a><br>
+        Land Class Types:<a href="https://services2.arcgis.com/G5vR3cOjh6g2Ed8E/ArcGIS/rest/services/Active_Addresses/FeatureServer" target="_blank"> Durham GIS</a><br>
+        Median Household Income:<a href="https://compass.durhamnc.gov/en/compass/MEDINC/blockgroup/" target="_blank"> Durham Neihborhood Compass</a>
+        
       </p>
   
       <button id="info-close" class="close-btn">Close</button>
