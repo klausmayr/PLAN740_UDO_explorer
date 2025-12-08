@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My Mapbox Webmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Mapbox GL JS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+        .map-overlay {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background: white;
+          padding: 8px 12px;
+          border-radius: 4px;
+          font-family: sans-serif;
+          font-size: 14px;
+          z-index: 2;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+        }
+            .legend {
+              position: absolute;
+              bottom: 20px;
+              left: 20px;
+              background: white;
+              padding: 12px;
+              border-radius: 4px;
+              font-family: Arial, sans-serif;
+              font-size: 13px;
+              line-height: 18px;
+              color: #333;
+              box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+              z-index: 2;
+            }
+          
+            .legend h4 {
+              margin: 0 0 6px;
+              font-size: 14px;
+            }
+          
+            .legend div {
+              display: flex;
+              align-items: center;
+              margin-bottom: 4px;
+            }
+            .color-box {
+                width: 18px;
+                height: 18px;
+                margin-right: 8px;
+                border-radius: 3px;
+                display: inline-block;
+                border: 1px solid #ccc;
+              }
+          
+            .info-icon {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-left: 6px;
+                background: #ccc;
+                color: #333;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 16px;
+                font-size: 12px;
+                cursor: pointer;
+                position: relative;
+              }
+              
+              .tooltip {
+                visibility: hidden;
+                width: 300px;
+                opacity: 0;
+                background: #333;
+                color: white;
+                padding: 6px 8px;
+                border-radius: 4px;
+                position: absolute;
+                left: 20px;
+                top: -4px;
+                z-index: 999;
+                white-space: normal;
+                transition: opacity 0.2s ease-in-out;
+              }
+              
+              .info-icon:hover .tooltip {
+                visibility: visible;
+                opacity: 1;
+              }
+
+              .income-swatch {
+                opacity: 0.4;   /* starts dimmed since layers are invisible */
+                cursor: pointer;
+              }
+              
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <div id="legend" class="legend">
+
+    <h4>Zoning Categories</h4>
+    <div><span class="color-box" style="background:hsl(244, 99%, 73%)"></span><label>R-D</label>
+        <span class="info-icon">i
+            <span class="tooltip">Lot</span>
+          </span>
+    </div>
+
+    <div><span class="color-box" style="background:hsl(17, 67%, 66%)"></span><label>RX-3, RX-5, IX, RX-8</label>
+        <span class="info-icon">i
+            <span class="tooltip">Residential District: Low-density, detached homes.</span>
+          </span>
+    </div>
+    <div><span class="color-box" style="background:hsl(114, 100%, 75%)"></span><label>CX-3, CX-5, CX-8, CX-20</label>
+        <span class="info-icon">i
+            <span class="tooltip">Residential District: Low-density, detached homes.</span>
+          </span>
+    </div>
+    <div><span class="color-box" style="background:hsla(0,0%,70%,0.70)"></span><label>Other</label></div>
+  
+    <h4 style="margin-top:12px;margin-bottom:0px;">Median Household Income (2023)</h4>
+    <i style="margin-top:-20px; margin-bottom:20px;">click boxes to see layers then hover <br>for more info</i>
+
+    <div class="income-swatch" data-layer="income-40">
+        <span class="color-box" style="background:#fee5d9; margin-top:12px"></span><label>&lt; $40k</label>
+    </div>
+    
+    <div class="income-swatch" data-layer="income-40-60">
+        <span class="color-box" style="background:#fcae91"></span><label>$40k–$60k</label>
+    </div>
+    
+    <div class="income-swatch" data-layer="income-60-80">
+        <span class="color-box" style="background:#fb6a4a"></span><label>$60k–$80k</label>
+    </div>
+    
+    <div class="income-swatch" data-layer="income-80-100">
+        <span class="color-box" style="background:#de2d26"></span><label>$80k–$100k</label>
+    </div>
+    
+    <div class="income-swatch" data-layer="income-100">
+        <span class="color-box" style="background:#a50f15"></span><label>&gt; $100k</label>
+    </div>
+    
+  </div>
+  
+  
+  
+  <script src="script.js"></script>
+</body>
+</html>
