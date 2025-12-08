@@ -189,7 +189,7 @@ incomeLayers.forEach(layerID => {
 
         const html = `
             <strong>Median Income:</strong> ${income}<br><br>
-            <strong>Top Land Classes:</strong>
+            <strong>Top Residential Land Classes:</strong>
             <ul>${top3Html}</ul>
         `;
 
@@ -204,3 +204,16 @@ incomeLayers.forEach(layerID => {
         popup.remove();
     });
 });
+
+const infoButton = document.getElementById('info-button');
+const infoPanel = document.getElementById('info-panel');
+const infoClose = document.getElementById('info-close');
+
+infoButton.addEventListener('click', () => {
+  infoPanel.classList.add('active');
+});
+
+infoClose.addEventListener('click', () => {
+  infoPanel.classList.remove('active');
+});
+
