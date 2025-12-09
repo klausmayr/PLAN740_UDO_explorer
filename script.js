@@ -79,7 +79,7 @@ map.on('load', () => {
         source: 'local-data',
         layout: { visibility: 'none' },
         filter: ['<', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 40000],
-        paint: { 'fill-color': '#fee5d9', 'fill-opacity': 0.8 }
+        paint: { 'fill-color': '#e7f0fa', 'fill-opacity': 0.8 }
     });
     
     map.addLayer({
@@ -92,7 +92,7 @@ map.on('load', () => {
             ['>=', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 40000],
             ['<', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 60000]
         ],
-        paint: { 'fill-color': '#fcae91', 'fill-opacity': 0.8 }
+        paint: { 'fill-color': '#c4dbf2', 'fill-opacity': 0.8 }
     });
     
     map.addLayer({
@@ -105,7 +105,7 @@ map.on('load', () => {
             ['>=', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 60000],
             ['<', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 80000]
         ],
-        paint: { 'fill-color': '#fb6a4a', 'fill-opacity': 0.8 }
+        paint: { 'fill-color': '#92c2e7', 'fill-opacity': 0.8 }
     });
     
     map.addLayer({
@@ -118,7 +118,7 @@ map.on('load', () => {
             ['>=', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 80000],
             ['<', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 100000]
         ],
-        paint: { 'fill-color': '#de2d26', 'fill-opacity': 0.8 }
+        paint: { 'fill-color': '#4d9ad1', 'fill-opacity': 0.8 }
     });
     
     map.addLayer({
@@ -127,7 +127,7 @@ map.on('load', () => {
         source: 'local-data',
         layout: { visibility: 'none' }, 
         filter: ['>=', ['to-number', ['slice', ['get', 'Median.Household.Income..2023'], 1]], 100000],
-        paint: { 'fill-color': '#a50f15', 'fill-opacity': 0.8 }
+        paint: { 'fill-color': '#1c6cb1', 'fill-opacity': 0.8 }
     });
     
 document.getElementById('toggle-local').addEventListener('change', (e) => {
